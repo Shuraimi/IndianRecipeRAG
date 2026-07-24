@@ -1,0 +1,16 @@
+streamlit
+langchain
+langchain-core
+langchain-community
+langchain-classic
+langchain-chroma
+langchain-groq
+langchain-huggingface
+chromadb
+sentence-transformers
+transformers
+torch
+pydantic
+python-dotenv
+plotly
+pandas
