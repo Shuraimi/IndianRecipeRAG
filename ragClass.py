@@ -36,11 +36,6 @@ from database import log_request
 
 class RAG:
     def __init__(self):
-        # define model
-        self.model=ChatGroq(
-            model_name="llama-3.3-70b-versatile",
-            temperature=0
-        )
         self.embedding_model = HuggingFaceEmbeddings(
         model_name="BAAI/bge-small-en-v1.5"
         )
@@ -88,6 +83,9 @@ Retrieved Context:
         self.build_chain()
         # store to keep track of chat history
         self.store={}
+        
+        # build initial chains with current selected model
+        self.update_model()
         
     def load_retriever(self):
         self.vectorstore=Chroma(
