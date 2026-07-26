@@ -1,0 +1,109 @@
+# ─────────────────────────────────────────────
+# Global settings
+# ─────────────────────────────────────────────
+[theme]
+baseFontSize = 14
+baseFontWeight = 400
+showSidebarBorder = true
+chartCategoricalColors = [
+    "#22C55E",
+    "#16A34A",
+    "#4ADE80",
+    "#86EFAC",
+    "#059669",
+    "#34D399",
+    "#6EE7B7",
+    "#10B981",
+]
+chartSequentialColors = [
+    "#F0FDF4",
+    "#DCFCE7",
+    "#BBF7D0",
+    "#86EFAC",
+    "#4ADE80",
+    "#22C55E",
+    "#16A34A",
+    "#15803D",
+    "#166534",
+    "#14532D",
+]
+
+# ─────────────────────────────────────────────
+# Light mode — fresh green
+# ─────────────────────────────────────────────
+[theme.light]
+primaryColor             = "#16A34A"
+backgroundColor          = "#FFFFFF"
+secondaryBackgroundColor = "#F0FDF4"
+codeBackgroundColor      = "#DCFCE7"
+textColor                = "#14532D"
+linkColor                = "#15803D"
+linkUnderline            = false
+borderColor              = "#86EFAC"
+showWidgetBorder         = true
+baseRadius               = "8px"
+buttonRadius             = "8px"
+
+font     = "'Inter':https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+codeFont = "'JetBrains Mono':https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+codeFontSize  = "13px"
+codeTextColor = "#14532D"
+headingFontSizes   = ["32px", "26px", "20px", "18px", "16px", "14px"]
+headingFontWeights = [700, 600, 600, 500, 500, 500]
+
+greenColor  = "#16A34A"
+blueColor   = "#0284C7"
+redColor    = "#DC2626"
+orangeColor = "#EA580C"
+yellowColor = "#CA8A04"
+violetColor = "#7C3AED"
+grayColor   = "#6B7280"
+
+dataframeBorderColor           = "#86EFAC"
+dataframeHeaderBackgroundColor = "#DCFCE7"
+
+[theme.light.sidebar]
+backgroundColor          = "#F0FDF4"
+secondaryBackgroundColor = "#DCFCE7"
+borderColor              = "#86EFAC"
+primaryColor             = "#16A34A"
+
+# ─────────────────────────────────────────────
+# Dark mode — deep green
+# ─────────────────────────────────────────────
+[theme.dark]
+primaryColor             = "#4ADE80"
+backgroundColor          = "#052E16"
+secondaryBackgroundColor = "#14532D"
+codeBackgroundColor      = "#166534"
+textColor                = "#F0FDF4"
+linkColor                = "#4ADE80"
+linkUnderline            = false
+borderColor              = "#166534"
+showWidgetBorder         = true
+baseRadius               = "8px"
+buttonRadius             = "8px"
+
+font     = "'Inter':https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+codeFont = "'JetBrains Mono':https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+codeFontSize  = "13px"
+codeTextColor = "#86EFAC"
+headingFontSizes   = ["32px", "26px", "20px", "18px", "16px", "14px"]
+headingFontWeights = [700, 600, 600, 500, 500, 500]
+
+greenColor  = "#4ADE80"
+blueColor   = "#38BDF8"
+redColor    = "#F87171"
+orangeColor = "#FB923C"
+yellowColor = "#FBBF24"
+violetColor = "#A78BFA"
+grayColor   = "#94A3B8"
+
+dataframeBorderColor           = "#166534"
+dataframeHeaderBackgroundColor = "#14532D"
+
+[theme.dark.sidebar]
+backgroundColor          = "#052E16"
+secondaryBackgroundColor = "#14532D"
+borderColor              = "#166534"
+primaryColor             = "#4ADE80"

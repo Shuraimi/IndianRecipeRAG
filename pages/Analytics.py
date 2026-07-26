@@ -133,7 +133,17 @@ with right:
             feedback_df,
             names='Feedback',
             values='Count',
-            hole=0.5
+            hole=0.5,
+            color_discrete_sequence=[
+                "#22C55E",
+                "#16A34A",
+                "#4ADE80",
+                "#86EFAC",
+                "#059669",
+                "#34D399",
+                "#6EE7B7",
+                "#10B981",
+            ]
         )
         st.subheader('👍 User Feedback')
         st.plotly_chart(fig,width='stretch')

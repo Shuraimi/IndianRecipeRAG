@@ -126,7 +126,21 @@ def process_input():
 st.set_page_config(page_title='Indian Recipe RAG',layout='wide')  
 create_table()  # to create the sql table once and checks whtehr it exists
 st.title('Indian Recipe RAG')
-        
+
+# to select model from sidebar
+# model list
+model_list=['llama-3.1-8b-instant','llama-3.3-70b-versatile','openai/gpt-oss-20b','openai/gpt-oss-safeguard-20b']
+
+def on_model_change():
+    st.session_state['assistant'].update_model()
+
+# create selectbox in sidebar
+selected_model=st.sidebar.selectbox(
+    'Select Model',
+    model_list,
+    key='selected_model',
+    on_change=on_model_change
+)
 
 import uuid
 if 'session_id' not in st.session_state:

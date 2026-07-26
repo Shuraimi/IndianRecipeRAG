@@ -97,20 +97,48 @@ Retrieved Context:
         
         self.retriever=self.vectorstore.as_retriever(search_type='mmr',
         search_kwargs={'k':5, 'lambda_mult': 0.5})
-        # also create history aware retriever
+       
+    # ill replace the build chain function with update_chain with currently instantiate the model and build chains with the selected model  from dropdown because the build_chain will use the model is was built and initialised previously on and will not take changes
+    # def build_chain(self):
+    #     # creation of chain which includes prompt and context
+    #     # also create history aware retriever
+    #     self.history_aware_retriever=create_history_aware_retriever(self.model,self.retriever,self.contextualize_q_prompt)
+    #     # create qa chain
+    #     self.qa_chain=create_stuff_documents_chain(self.model,self.qa_prompt,output_parser=self.pydantic_parser)
+        
+    #     # rag chain
+    #     self.rag_chain=create_retrieval_chain(self.history_aware_retriever,self.qa_chain)
+        
+    #     # final chain
+    #     self.chain=RunnableWithMessageHistory(
+    #         self.rag_chain,
+    #         self.get_session_history,
+    #         input_messages_key='input',
+    #         history_messages_key='chat_history',
+    #         output_messages_key='answer'
+    #     )
+    
+    def update_model(self):
+        """" Call this function whenever the model cnages in the selection sidebar"""
+        
+        # re initialise chatgroq instance with the new model name
+        self.model=ChatGroq(
+            model=st.session_state['selected_model'],
+            temperature=0
+        )
+        
+        # rebuild all dependent chains with the new model
         self.history_aware_retriever=create_history_aware_retriever(self.model,self.retriever,self.contextualize_q_prompt)
         
-    def build_chain(self):
-        # creation of chain which includes prompt and context
+        self.qa_chain=create_stuff_documents_chain(
+            self.model,self.qa_prompt,output_parser=self.pydantic_parser
+        )
         
-        # create qa chain
-        self.qa_chain=create_stuff_documents_chain(self.model,self.qa_prompt,output_parser=self.pydantic_parser)
+        self.rag_chain=create_retrieval_chain(
+            self.history_aware_retriever,self.qa_chain
+        )
         
-        # rag chain
-        self.rag_chain=create_retrieval_chain(self.history_aware_retriever,self.qa_chain)
-        
-        # final chain
-        self.chain=RunnableWithMessageHistory(
+        self.chain = RunnableWithMessageHistory(
             self.rag_chain,
             self.get_session_history,
             input_messages_key='input',
