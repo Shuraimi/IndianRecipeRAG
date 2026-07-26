@@ -80,7 +80,6 @@ Retrieved Context:
         
         # Automatically build everything
         self.load_retriever()
-        self.build_chain()
         # store to keep track of chat history
         self.store={}
         
