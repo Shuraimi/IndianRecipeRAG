@@ -196,6 +196,8 @@ Finally, I added support for **dynamic model selection**, allowing users to swit
 
 > I used ChatGPT for various pat of my project to guide me and explain the code and I wrote the code instead of copy pasting.
 > Claude gave me the dataset to inlcude only indian recipes from the original list of 6000 recipes
+> Used streamlit AI chat to build custom UI for streamlit prividing it material ui them as base theme
+> Use this as reference for further https://github.com/streamlit/streamlit/tree/develop/lib/streamlit/.agents/skills/developing-with-streamlit/assets/templates/themes
 
 
 ## Review Tips (For peer review)
