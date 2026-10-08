@@ -129,7 +129,7 @@ st.title('Indian Recipe RAG')
 
 # to select model from sidebar
 # model list
-model_list=['openai/gpt-oss-120b','qwen/qwen3.8-27b','openai/gpt-oss-20b','meta-llama/llama-prompt-guard-2-86m']
+model_list=['openai/gpt-oss-120b','qwen/qwen3.8-27b','openai/gpt-oss-20b']
 
 def on_model_change():
     st.session_state['assistant'].update_model()
