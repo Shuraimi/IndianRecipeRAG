@@ -10,6 +10,74 @@ The data I have used for this project is the recipes which have been scrapped by
 The link to the dataset : https://github.com/kanishk307/IndianFoodDatasetGeneration
 I have only selected Indian Recipes from the dataset. 
 
+## Ingestion
+The dataset containing recipes was taken from kaggle, converted to json format and then stored in Chroma vectorstore with each recipe as a separate document .
+
+## Retrieval
+The recipes are retrieved from the vectorstore using search strategies like similarity score, MMR and cosine similarity
+
+## Sample dataset
+```
+[
+
+{
+"title": "Masala Karela Recipe",
+"cuisine": "Indian",
+"course": "Side Dish"
+"diet": "Diabetic Friendly",
+"prep_time_mins": 15,
+"cook_time_mins": 30,
+"total_time_mins": 45
+"servings": 6,
+"ingredients": "6 Karela (Bitter Gourd/ Pavakkai)
+- deseeded; Salt - to taste; 1 Onion
+2 teaspoons Cumin seeds (Jeera); 1 tablespoon Coriander Powder (Dhania); 1 tablespoon Amchur (Dry Mango Powder); Sunflower Oil - as required",
+"num_ingredients": 10,
+"instructions": "To begin making the Masala Karela Recipe,de-seed the karela and slice. Do not remove the skin as the skin has all the nutrients. Add the karela to the pressure cooker with 3 tablespoon of
+water, salt and turmeric powder and pressure cook for three whistles. Release the pressure immediately and open the lids. Keep aside.Heat oil in a heavy bottomed pan or a kadhai. Add cumin seeds and let it
+sizzle.Once the cumin seeds have sizzled, add onions and saute them till it turns golden brown in color.Add the karela, red chilli powder, amchur powder, coriander powder and besan. Stir to combine the masalas
+into the karela.Drizzle a little extra oil on the top and mix again. Cover the pan and simmer Masala Karela stirring occasionally until everything comes together well. Turn off the heat. Transfer Masala Karela
+into a serving bowl and serve. Serve Masala Karela along with Panchmel Dal and Phulka for a weekday meal with your family.",
+"source_url": "https: //www.archanaskitchen.com/masala-karela-recipe"
+
+thinly sliced; 3 tablespoon Gram flour (besan); 2 teaspoons Turmeric powder (Haldi); 1 tablespoon Red Chilli powder;
+},
+
+{
+"title": "Spicy Tomato Rice (Recipe)",
+"cuisine": "South Indian Recipes",
+"course": "Main Course",
+"diet": "Vegetarian",
+"prep_time_mins":
+"cook_time_mins": 10,
+"total_time mins": 15,
+"servings": 3,
+"ingredients": "2-1 / 2 cups rice - cooked; 3 tomatoes; 3 teaspoons BC Belle Bhat powder; salt - as per taste; 1 teaspoon chickpea lentils; 1/2 teaspoon cumin seeds; 1 teaspoon white urad dal; 1/2 Teaspoon
+mustard; 1 green chilli; 1 dry red chilli; 2 teaspoon cashew - or peanuts; 1-1 / 2 tablespoon oil - 1/2 teaspoon asafoetida",
+"num_ingredients": 12,
+"instructions": "To make tomato puliogere, first cut the tomatoes. Now put in a mixer grinder and puree it. Now heat oil in a pan. After the oil is hot, add chana dal, urad dal, cashew and let it cook for
+10 to 20 seconds. After 10 to 20 seconds, add cumin seeds, mustard seeds, green chillies, dry red chillies and curry leaves. After 30 seconds, add tomato puree to it and mix. Add BC Belle Bhat powder, salt and
+mix it. Allow to cook for 7 to 8 minutes and then turn off the gas. Take it out in a bowl, add cooked rice and mix it. Serve hot. Serve tomato puliogre with tomato cucumber raita and papad for dinner.",
+"source_url": "http://www.archanaskitchen.com/spicy-tomato-rice-recipe-in-hindi"
+}
+
+]
+```
+
+## Test questions 
+- Give me a recipe which contains paneer and spinach
+- Give me a recipe which contains rice and dal
+- Give me a recipe of biryani
+
+
+## Chunking
+The list of recipes or the complete document is chunked into separate recipes for easy retrieval
+
+## Ranking choice
+I have used the top 5 relevant recipes which are sent to the LLM in order for it to parse them and give the output
+
+## How missing evedence was handled?
+> This part was handled to some extend in the prompt by specifying in it that if it does'nt know any answer, it should say it doesn't know. I also planned to further add `Out of Domain` handling.
 
 ## Project structure/architecture
 
@@ -52,11 +120,10 @@ I --> J[Monitoring Dashboard]
   * `BAAI/bge-small-en-v1.5`
 
 * **LLMs (via ChatGroq)**
-
-  * `llama-3.1-8b-instant`
-  * `llama-3.3-70b-versatile`
+  
+  * `openai/gpt-oss-120b`
+  * `qwen/qwen3.8-27b`
   * `openai/gpt-oss-20b`
-  * `openai/gpt-oss-safeguard-20b`
 
 
 ## File structure
